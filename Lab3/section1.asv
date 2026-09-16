@@ -1,0 +1,10 @@
+disp('SECTION 1 example 1');
+sigma = 0 ; omega = 10;
+mag_x = 2; %enter the magnitude of x
+theta_x = 5 * pi/180; % convert degrees to radians
+t = linspace(0,5,1000);
+% Write the formula to evaluate x_t given mag, t, sigma, and theta_x.
+% Do not forget to use the dot operator for element-by-element
+% multiplication of two vectors (when needed)
+x_t = mag_x*exp(sigma*t) .* cos(omega*t + theta_x);
+make_plot(t,x_t,'section 1 input','t','x');
