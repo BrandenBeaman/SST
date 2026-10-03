@@ -1,7 +1,7 @@
 % Section 5 problem 1
 
 tp = [0.368 0.736 0.632 1.264]
-hp = 2*exp(-2*t)
+hp = 2*exp(-2*tp)
 
 HTF = tf(2,[1 2]);
 t = (0:0.01:6);
