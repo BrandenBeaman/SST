@@ -7,7 +7,7 @@ figure;
 plot(tout,y);
 grid on;
 hold on;
-title('Impulse problem 3');
+title('Unit step problem 3');
 xlabel('Time(s)');
 ylabel('y(t)');
 [~,k] = min(abs(tout-1));
