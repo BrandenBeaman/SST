@@ -16,7 +16,7 @@ den = sym2poly(symDen)
 % Create a continuous-time model of the transfer function
 AvTF = tf(num, den)
 
-% Bode plots 
+% Magnitude only plot
 opts = bodeoptions;
 opts.Grid = 'on';
 opts.PhaseVisible ='off';
