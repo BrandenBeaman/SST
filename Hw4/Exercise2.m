@@ -2,18 +2,18 @@
 s = tf('s');
 
 % Circuit Component Values
-C1 = 2; 
-R2 = 5; 
-L1 = 3;
+C1 = 0.1; 
+R2 = 0.7; 
+L1 = 10;
 
-ZC1 = 1/(2*s);
+ZC1 = 1/(C1*s)
 
 % Impedance of resistor and inductor in parallel
-ZP = (R2 * L1*s) / (R2 + L1*s);
+ZP = (R2 * ZC1) / (R2 + ZC1)
 
 disp('Section2')
 % Input impedance
-Zin = minreal(ZC1 + ZP)
+Zin = minreal(L1 + ZP)
 
 % Transfer function Vout/Vin
 TF = minreal(ZP / Zin)
