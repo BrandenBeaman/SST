@@ -1,0 +1,46 @@
+clear; % Remove variables from workspace
+close all; % close all figures
+syms s
+k = 25; z = 7; p1 = 0.01; p2 = 200;
+Av = k*(s+z)/((s+p1)*(s+p2))
+
+%convert symbolic equation to numerator and denominator row vectors
+[symNum,symDen] = numden(Av)
+num = sym2poly(symNum)
+den = sym2poly(symDen)
+
+% Create a continuous-time model of the transfer function
+AvTF = tf(num, den)
+
+% Create a bode plot 
+bode(AvTF)
+title('initial Bode plot')
+
+% making a grid 
+opts = bodeoptions
+opts.Grid = 'on';
+figure
+bode(AvTF, opts)
+title('Grid on')
+
+
+% setting x and y limita
+opts = bodeoptions;
+opts.Grid = 'on';
+opts.xlim = [10^-4 10^3];
+opts.ylim = {[-60 60]; [-100 20]};
+opts.FreqUnits = 'Hz';
+figure
+bode(AvTF, opts)
+title('setting x and y limits')
+
+% Magnitude Plot
+opts = bodeoptions;
+opts.Grid ='on';
+opts.PhaseVisible ='off';
+opts.xlim = [10^-4 10^3];
+opts.ylim = {[-60 60]; [-100 20]};
+opts.FreqUnits = 'Hz';
+figure
+bode(AvTF, opts)
+title('magnitude-only plot')
