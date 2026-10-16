@@ -2,11 +2,7 @@
 clear;
 close all;
 syms s
-C1 = 2; R1 = 5; R2 = 3;
-ZC1 = 1/(s*C1);
-Zp =(R2*ZC1/(R2+ZC1));
-Zin = (R1+Zp);
-Av4 = (Zp/Zin);
+Av4 = ((13)/((s+13)*(s+87)))
 
 % convert symbolic equation to numerator and denominator row vectors
 [symNum,symDen] = numden(Av4)
@@ -19,6 +15,8 @@ AvTF = tf(num, den)
 % Bode plots 
 opts = bodeoptions;
 opts.Grid = 'on';
+opts.xlim = [10^-3 10^2];
+opts.ylim = {[-30 30]};
 opts.FreqUnits ='Hz';
 figure
 bode(AvTF, opts)
